@@ -1,8 +1,10 @@
+import React, { FC } from 'react'
 import { AuthorizedUserType } from 'App'
 import { Path } from 'enums'
-import React, { FC } from 'react'
 import { Navigate } from 'react-router-dom'
 import { Nullable, ReturnComponentType } from 'types'
+import style from './Profile.module.css'
+import { StyledButton, StyledFlex } from 'styled'
 
 type ProfilePropsType = {
 	authorizedUser: Nullable<AuthorizedUserType>
@@ -21,10 +23,9 @@ export const Profile: FC<ProfilePropsType> = ({ authorizedUser, isAuth, setIsAut
 	}
 
 	return (
-		<div>
-			Здравствуйте, {login}
-
-			<button onClick={onLogOutClick}>Выйти</button>
-		</div>
+		<StyledFlex direction='column' align='center'>
+			<div className={style.greeting}>Здравствуйте, <span>{login}</span></div>
+			<StyledButton mt='50px' width='200px' backgroundColor='#F5F5F5' color='#000' onClick={onLogOutClick}>Выйти</StyledButton>
+		</StyledFlex>
 	)
 }

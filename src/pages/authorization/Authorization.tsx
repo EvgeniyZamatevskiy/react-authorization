@@ -1,15 +1,18 @@
+import React, { FC, useState } from 'react'
 import { AUTH } from 'api'
 import { AuthorizedUserType } from 'App'
 import { EMPTY_STRING } from 'constants/base'
 import { Path } from 'enums'
-import React, { FC, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { Navigate } from 'react-router-dom'
 import { Nullable, ReturnComponentType } from 'types'
+import style from './Authorization.module.css'
+import { StyledButton } from 'styled'
 
 export type LoginParamsType = {
 	login: string
 	password: string
+	rememberMe: boolean
 }
 
 type AuthorizationPropsType = {
@@ -24,21 +27,33 @@ export const Authorization: FC<AuthorizationPropsType> = ({ setAuthorizedUser, s
 	const [isDisabled, setIsDisabled] = useState<boolean>(false)
 
 	const { register, handleSubmit, formState: { errors } } = useForm<LoginParamsType>({
-		mode: 'onBlur',
+		mode: 'onChange',
 	},
 	)
 
 	const emailValidation = {
-		required: 'Field is required!',
+		required: 'Обязательное поле',
 		pattern: {
 			value: /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
-			message: 'Incorrect email!',
+			message: 'Неправильный электронный адрес',
 		}
 	}
 
 	const passwordValidation = {
-		required: 'Field is required!',
+		required: 'Обязательное поле',
 	}
+
+	const resetErrorMessage = (): void => {
+		if (errorMessage) {
+			setErrorMessage(EMPTY_STRING)
+		}
+	}
+
+	const onLoginChange = (): void => resetErrorMessage()
+
+	const onPasswordChange = (): void => resetErrorMessage()
+
+	const onRememberMeChange = (): void => resetErrorMessage()
 
 	const login = async (login: string, password: string) => {
 
@@ -70,21 +85,30 @@ export const Authorization: FC<AuthorizationPropsType> = ({ setAuthorizedUser, s
 	}
 
 	return (
-		<>
-			<form onSubmit={handleSubmit(onSubmit)}>
+		<form className={style.form} onSubmit={handleSubmit(onSubmit)}>
 
-				<input type='text' placeholder='Логин'
-					{...register('login', emailValidation)} />
-				{errors?.login && <p>{errors?.login.message}</p>}
+			{errorMessage &&
+				<div className={style.errorMessageContainer}>
+					<span>!</span><div className={style.errorMessage}>{errorMessage}</div>
+				</div>}
 
-				<input type='text' placeholder='Пароль'
-					{...register('password', passwordValidation)} />
-				{errors?.password && <p>{errors?.password.message}</p>}
+			<span className={style.loginText}>Логин</span>
+			<input className={`${style.loginField} ${errors?.login && style.errorBorderField}`} type='text'
+				{...register('login', emailValidation)} onChange={onLoginChange} />
+			{errors?.login && <p className={style.errorMessageField}>{errors?.login.message}</p>}
 
-				<button type='submit' disabled={isDisabled}>Войти</button>
+			<span className={style.passwordText}>Пароль</span>
+			<input className={`${style.passwordField} ${errors?.password && style.errorBorderField}`} type='password'
+				{...register('password', passwordValidation)} onChange={onPasswordChange} />
+			{errors?.password && <p className={style.errorMessageField}>{errors?.password.message}</p>}
 
-				{errorMessage && <h3>{errorMessage}</h3>}
-			</form>
-		</>
+			<label className={style.label}>
+				<input className={style.rememberMe} type='checkbox' {...register('rememberMe')} onChange={onRememberMeChange} />
+				Запомнить пароль
+			</label>
+
+			<StyledButton type='submit' mt='40px' disabled={isDisabled}>Войти</StyledButton>
+
+		</form>
 	)
 }
