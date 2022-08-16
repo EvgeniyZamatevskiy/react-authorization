@@ -8,7 +8,7 @@ export const Global = createGlobalStyle`
 }
 `
 
-export const AppWrapper = styled.div`
+export const Wrapper = styled.div`
   width: 100%;
   min-height: 100vh;
   border: 1px solid red;
@@ -17,14 +17,7 @@ export const AppWrapper = styled.div`
   justify-content: center;
 `
 
-export const StyledFlex = styled.div<{ direction?: string, justify?: string, align?: string }>`
-	display: flex;
-  flex-direction: ${({ direction }) => direction || 'row'};
-	justify-content: ${({ justify }) => justify || 'stretch'};
-	align-items: ${({ align }) => align || 'stretch'};
-`
-
-export const StyledTitle = styled.h1`
+export const Title = styled.h1`
 	text-align: center;
   position: absolute;
 	top: 8%;
@@ -35,7 +28,7 @@ export const StyledTitle = styled.h1`
 	line-height: 78px;
 `
 
-export const StyledButton = styled.button<{ mt?: string, width?: string, backgroundColor?: string, color?: string, height?: string }>`
+export const Button = styled.button<{ mt?: string, width?: string, backgroundColor?: string, color?: string, height?: string }>`
   border-radius: 8px;
 	cursor: pointer;
   border: none;
