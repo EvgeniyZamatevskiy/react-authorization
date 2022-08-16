@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FC, useState } from 'react'
+import { Nullable, ReturnComponentType } from 'types'
+import { Authorization, Profile } from 'pages'
+import { Navigate, Route, Routes } from 'react-router-dom'
+import { Path } from 'enums'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export type AuthorizedUserType = {
+  id: number
+  login: string
 }
 
-export default App;
+export const App: FC = (): ReturnComponentType => {
+
+  const [authorizedUser, setAuthorizedUser] = useState<Nullable<AuthorizedUserType>>(null)
+  const [isAuth, setIsAuth] = useState<boolean>(false)
+
+  return (
+    <div>
+      <Routes>
+        <Route path={Path.LOGIN} element={<Authorization setAuthorizedUser={setAuthorizedUser} setIsAuth={setIsAuth} isAuth={isAuth} />} />
+        <Route path={Path.PROFILE} element={<Profile authorizedUser={authorizedUser} isAuth={isAuth} setIsAuth={setIsAuth} />} />
+        <Route path={Path.HOME} element={<Navigate to={Path.PROFILE} />} />
+      </Routes>
+    </div>
+  )
+}
