@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/react-authorization/static/js/main.0f667adb.js",
+    "main.js": "/react-authorization/static/js/main.b4989633.js",
     "static/js/787.c25ff9dc.chunk.js": "/react-authorization/static/js/787.c25ff9dc.chunk.js",
     "index.html": "/react-authorization/index.html",
-    "main.0f667adb.js.map": "/react-authorization/static/js/main.0f667adb.js.map",
+    "main.b4989633.js.map": "/react-authorization/static/js/main.b4989633.js.map",
     "787.c25ff9dc.chunk.js.map": "/react-authorization/static/js/787.c25ff9dc.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.0f667adb.js"
+    "static/js/main.b4989633.js"
   ]
 }
