@@ -25,6 +25,7 @@ export const Authorization: FC<AuthorizationPropsType> = ({ setAuthorizedUser, s
 
 	const { register, handleSubmit, formState: { errors } } = useForm<LoginParamsType>({
 		mode: 'onBlur',
+		defaultValues: { login: 'steve.jobs@example.com', password: 'password' }
 	},
 	)
 
