@@ -5,7 +5,7 @@ import { Path } from 'enums'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { Navigate } from 'react-router-dom'
 import { ReturnComponentType } from 'types'
-import { Button } from 'styles'
+import { Button, Span } from 'styles'
 import { AuthorizationPropsType, LoginParamsType } from './types'
 import {
 	FormContainer,
@@ -16,7 +16,6 @@ import {
 	ErrorMessageText,
 	Label,
 	Checkbox,
-	Span
 } from './styled'
 
 export const Authorization: FC<AuthorizationPropsType> = ({ setAuthorizedUser, setIsAuth, isAuth }): ReturnComponentType => {
@@ -105,7 +104,7 @@ export const Authorization: FC<AuthorizationPropsType> = ({ setAuthorizedUser, s
 				Запомнить пароль
 			</Label>
 
-			<Button type='submit' mt='40px' disabled={isDisabled}>Войти</Button>
+			<Button primary disabled={isDisabled}>Войти</Button>
 
 		</FormContainer>
 	)

@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle, css } from 'styled-components'
 
 export const Global = createGlobalStyle`
 * {
@@ -27,21 +27,40 @@ export const Title = styled.h1`
 	line-height: 78px;
 `
 
-export const Button = styled.button<{ mt?: string, width?: string, backgroundColor?: string, color?: string, height?: string }>`
+export const Span = styled.span<{ mt?: string, weight?: string }>`
+	margin-top: ${({ mt }) => mt || '0px'};
+	font-weight: ${({ weight }) => weight || '400'};
+`
+
+export const Button = styled.button<{ primary?: boolean, secondary?: boolean }>`
   border-radius: 8px;
 	cursor: pointer;
   border: none;
 	font-weight: 700;
   font-size: 18px;
+  height: 60px;
 
-  margin-top: ${({ mt }) => mt || '0px'};
-  width: ${({ width }) => width || '640px'};
-	height: ${({ height }) => height || '60px'};
-	background-color: ${({ backgroundColor }) => backgroundColor || '#4A67FF'};
-  color: ${({ color }) => color || '#fff'};
+  ${({ primary }) => primary && css`
+  margin-top: 40px;
+  width: 640px;
+  background-color: #4A67FF;
+  color: #fff;
 
-  &:disabled{
+  &:disabled {
   background-color: #99A9FF;
 	cursor: no-drop;
 }
+`}
+
+  ${({ secondary }) => secondary && css`
+  margin-top: 50px;
+  width: 200px;
+  background-color: #F5F5F5;
+  color: #000;
+  transition: background-color 0.2s ease-in-out 0s;
+
+  &:hover {
+  background-color: #F0F0F0;
+}
+`}
 `

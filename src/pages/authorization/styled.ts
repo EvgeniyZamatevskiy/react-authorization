@@ -66,7 +66,3 @@ export const Checkbox = styled.input`
 	width: 20px;
 	height: 20px;
 `
-
-export const Span = styled.span<{ mt?: string }>`
-	margin-top: ${({ mt }) => mt || '0px'};
-`

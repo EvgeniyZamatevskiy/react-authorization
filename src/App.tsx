@@ -13,6 +13,7 @@ export const App: FC = (): ReturnComponentType => {
   return (
     <>
       <Title>ONLY.</Title>
+
       <Wrapper>
         <Routes>
           <Route path={Path.LOGIN} element={
@@ -22,6 +23,7 @@ export const App: FC = (): ReturnComponentType => {
               isAuth={isAuth}
             />
           } />
+
           <Route path={Path.PROFILE} element={
             <Profile
               authorizedUser={authorizedUser}
@@ -30,6 +32,7 @@ export const App: FC = (): ReturnComponentType => {
               setAuthorizedUser={setAuthorizedUser}
             />}
           />
+
           <Route path={Path.HOME} element={<Navigate to={Path.PROFILE} />} />
         </Routes>
       </Wrapper>
