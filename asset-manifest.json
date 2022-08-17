@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/react-authorization/static/js/main.71591d3d.js",
+    "static/js/787.c25ff9dc.chunk.js": "/react-authorization/static/js/787.c25ff9dc.chunk.js",
+    "index.html": "/react-authorization/index.html",
+    "main.71591d3d.js.map": "/react-authorization/static/js/main.71591d3d.js.map",
+    "787.c25ff9dc.chunk.js.map": "/react-authorization/static/js/787.c25ff9dc.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.71591d3d.js"
+  ]
+}
