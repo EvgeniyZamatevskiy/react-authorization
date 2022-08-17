@@ -39,7 +39,7 @@ export const Authorization: FC<AuthorizationPropsType> = ({ setAuthorizedUser, s
 
 	const passwordSettings = {
 		required: 'Обязательное поле',
-		minLength: { value: 3, message: 'Минимум 8 символов' },
+		minLength: { value: 3, message: 'Минимум 3 символа' },
 	}
 
 	const resetErrorServerMessage = (): void => {

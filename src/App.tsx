@@ -15,8 +15,21 @@ export const App: FC = (): ReturnComponentType => {
       <Title>ONLY.</Title>
       <Wrapper>
         <Routes>
-          <Route path={Path.LOGIN} element={<Authorization setAuthorizedUser={setAuthorizedUser} setIsAuth={setIsAuth} isAuth={isAuth} />} />
-          <Route path={Path.PROFILE} element={<Profile authorizedUser={authorizedUser} isAuth={isAuth} setIsAuth={setIsAuth} />} />
+          <Route path={Path.LOGIN} element={
+            <Authorization
+              setAuthorizedUser={setAuthorizedUser}
+              setIsAuth={setIsAuth}
+              isAuth={isAuth}
+            />
+          } />
+          <Route path={Path.PROFILE} element={
+            <Profile
+              authorizedUser={authorizedUser}
+              isAuth={isAuth}
+              setIsAuth={setIsAuth}
+              setAuthorizedUser={setAuthorizedUser}
+            />}
+          />
           <Route path={Path.HOME} element={<Navigate to={Path.PROFILE} />} />
         </Routes>
       </Wrapper>

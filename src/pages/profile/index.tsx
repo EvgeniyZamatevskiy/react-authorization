@@ -6,11 +6,14 @@ import { Button } from 'styles'
 import { Greeting, ProfileContainer } from './styled'
 import { ProfilePropsType } from './types'
 
-export const Profile: FC<ProfilePropsType> = ({ authorizedUser, isAuth, setIsAuth }): ReturnComponentType => {
+export const Profile: FC<ProfilePropsType> = ({ authorizedUser, isAuth, setIsAuth, setAuthorizedUser }): ReturnComponentType => {
 
 	const login = authorizedUser?.login
 
-	const onLogOutClick = (): void => setIsAuth(false)
+	const onLogOutClick = (): void => {
+		setIsAuth(false)
+		setAuthorizedUser(null)
+	}
 
 	if (!isAuth) {
 		return <Navigate to={Path.LOGIN} />

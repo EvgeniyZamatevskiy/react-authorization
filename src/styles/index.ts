@@ -11,7 +11,6 @@ export const Global = createGlobalStyle`
 export const Wrapper = styled.div`
   width: 100%;
   min-height: 100vh;
-  border: 1px solid red;
   display: flex;
   align-items: center;
   justify-content: center;
