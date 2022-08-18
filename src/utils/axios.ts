@@ -10,6 +10,10 @@ export const axios = {
 
 				if (url.includes('imitation')) {
 					responseData = { id: RegisteredUser.ID, login: data.login }
+				} else {
+					reject({ message: 'Request failed with status code 404' })
+					console.error(`POST ${url} 404`)
+					return
 				}
 
 				if (data.login === RegisteredUser.LOGIN && data.password === RegisteredUser.PASSWORD) {
